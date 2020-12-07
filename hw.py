@@ -6,6 +6,7 @@ uppercase = False
 EnglishCheck = False
 NumberCheck = False
 fail = False
+Check = False
 try:
     n=len(str[1])
 except:
@@ -27,20 +28,28 @@ for i in range(0,n):
         EnglishCheck = True
     if 48 <= ord(list1[i]) <=57:
         NumberCheck = True
+    if (65 <= ord(list1[i]) <= 90) == False and (97 <= ord(list1[i]) <=122) == False and (48 <= ord(list1[i]) <=57) == False:
+        Check = True
+         
+         
+
        
 if EnglishCheck == False:
     print("缺少英文")
+    sys.exit(0)
 elif uppercase == False:
     print("請輸入至少一個大寫英文")
     sys.exit(0) 
 elif NumberCheck == False:
     print("缺少數字")
     sys.exit(0) 
-
+elif Check == False:
+    print("缺少符號")
+    sys.exit(0)
     
 temp = list1[0]
 for i in range(1,n):
-    if ord(temp)+1 == ord(list1[i]):
+    if ord(temp)+1 == ord(list1[i]) and ord(temp)!=64 and ord(temp)!=47 and ord(temp)!=96 :
         continuous = True
         if 65 <= ord(list1[i]) <=90:
             print("大寫英文不可連續")
